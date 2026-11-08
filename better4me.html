@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#78d8f5">
+<title>better4me | No pressure. Just progress.</title>
+<style>
+:root{--ink:#174765;--blue:#69c9ef;--deep:#218fc5;--pale:#eafaff;--glass:rgba(255,255,255,.68);--line:rgba(255,255,255,.9)}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;color:var(--ink);font-family:ui-rounded,"Trebuchet MS",system-ui,sans-serif;background:radial-gradient(circle at 15% 8%,#fff 0 5%,transparent 23%),radial-gradient(circle at 90% 20%,#d7f7ff 0 8%,transparent 25%),linear-gradient(145deg,#b9edff,#75c9ed 48%,#c9f4f8);background-attachment:fixed}
+.wrap{max-width:760px;margin:auto;padding:24px 16px 100px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px}.brand{font-size:25px;font-weight:900;letter-spacing:-1px}.brand span{color:#fff;text-shadow:0 1px 5px #4ba8d1}.tag{font-size:12px;color:#276585}
+.card{background:var(--glass);border:1px solid var(--line);border-radius:25px;padding:20px;margin:14px 0;box-shadow:0 12px 30px rgba(26,111,151,.13),inset 0 1px 0 #fff;backdrop-filter:blur(12px)}
+h1{font-size:28px;line-height:1.12;margin:4px 0 8px}h2{font-size:19px;margin:0 0 12px}p{line-height:1.5;margin:7px 0;color:#376b86}.muted{font-size:13px;color:#56839a}
+.pill{display:inline-block;background:#fff9;border:1px solid #fff;padding:7px 12px;border-radius:99px;font-size:12px;color:#286a8b}
+button{border:0;border-radius:15px;padding:12px 16px;background:linear-gradient(180deg,#fff,#d8f5ff);color:#17618a;font:inherit;font-weight:800;box-shadow:0 4px 0 #79c8e7,0 7px 14px #3b9ac333;cursor:pointer}
+button:active{transform:translateY(2px);box-shadow:0 2px 0 #79c8e7}
+.primary{background:linear-gradient(180deg,#8de5ff,#43b8e8);color:#064c75}.tabs{display:flex;gap:8px;overflow:auto;padding:4px 0 10px}.tabs button{white-space:nowrap;padding:10px 13px;font-size:13px}.tabs button.active{background:linear-gradient(180deg,#3ab7e8,#168bc5);color:white}
+.view{display:none}.view.active{display:block}.hero{background:linear-gradient(135deg,#ffffffb8,#a8eaffaa);position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:150px;height:150px;border-radius:50%;right:-35px;top:-45px;background:radial-gradient(circle at 35% 30%,#fff,#8be3ff 65%,#4ab6e6);opacity:.75}
+.row{display:flex;gap:12px;align-items:center;justify-content:space-between}.stat{flex:1;text-align:center;background:#ffffff80;border-radius:17px;padding:13px 7px}.stat strong{display:block;font-size:22px}.stat small{font-size:11px;color:#56839a}
+.item{display:flex;gap:11px;align-items:flex-start;padding:12px 0;border-bottom:1px solid #ffffffb0}.item:last-child{border:0}.item input{width:21px;height:21px;accent-color:#168fc5;margin-top:2px}.item label{flex:1;line-height:1.4}.bar{height:12px;background:#ffffffa8;border-radius:99px;overflow:hidden;margin:12px 0}.bar>div{height:100%;width:0;background:linear-gradient(90deg,#39b5e8,#83e6ee);border-radius:99px;transition:width .2s}
+select{width:100%;padding:13px;border-radius:14px;border:1px solid #b9e9f8;background:#fff;color:#245d79;font:inherit;margin:8px 0 12px}
+.meal{background:#ffffff80;padding:13px;border-radius:16px;margin:9px 0}.meal b{display:block;margin-bottom:4px}
+footer{text-align:center;font-size:12px;color:#39728e;padding:18px}
+@media(min-width:650px){.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.grid .card{margin:0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><div><div class="brand">better<span>4me</span> ✦</div><div class="tag">No pressure. Just progress.</div></div><span class="pill">YOUR SPACE ☁️</span></header>
+<nav class="tabs" aria-label="App sections">
+<button class="active" data-tab="today">Today</button><button data-tab="move">Movement</button><button data-tab="food">Meal ideas</button><button data-tab="habits">Habits</button><button data-tab="progress">Progress</button>
+</nav>
+<section id="today" class="view active">
+<div class="card hero"><span class="pill">A fresh start, any day</span><h1>Little steps count.</h1><p>Build a day that feels good. You don't have to do everything at once.</p><button class="primary" onclick="showTab('habits')">Check in on my habits →</button></div>
+<div class="row">
+<div class="stat"><strong id="todayDone">0/4</strong><small>habits checked</small></div><div class="stat"><strong>🌤️</strong><small>steady progress</small></div><div class="stat"><strong>∞</strong><small>fresh starts</small></div>
+</div>
+<div class="card"><h2>Today's gentle reminder</h2><p>Eat regularly, drink some water, move in a way you enjoy, and give yourself time to rest. Your progress is not a competition.</p></div>
+<div class="grid"><div class="card"><h2>💧 Water break</h2><p>Keep a drink nearby and sip when you're thirsty.</p></div><div class="card"><h2>🎧 Move for fun</h2><p>A walk, a stretch, a dance break, or a rest day all count.</p></div></div>
+</section>
+<section id="move" class="view">
+<div class="card"><h1>Find your kind of movement</h1><p>Choose something that matches your energy today. Rest is a valid choice, too.</p>
+<label for="workout"><b>Pick a session</b></label><select id="workout"><option>Full-body gym basics</option><option>Upper-body machines</option><option>Lower-body basics</option><option>10-minute dance break</option><option>Gentle stretch</option><option>Rest and recovery</option></select>
+<div id="workoutInfo" class="meal"><b>Full-body gym basics</b><span>Start easy, use comfortable resistance, and take breaks whenever you need them.</span></div>
+<button class="primary" onclick="document.getElementById('moveDone').textContent='Session selected. Make it your own!';">Choose this session</button><p id="moveDone" class="muted" aria-live="polite"></p></div>
+<div class="card"><h2>Movement note</h2><p>You don't need to earn food or push through pain. Adjust, pause, or stop whenever your body needs it.</p></div>
+</section>
+<section id="food" class="view">
+<div class="card"><h1>Meal inspiration 🥝</h1><p>Ideas, not rules. Mix and match foods you like and have available.</p>
+<div class="meal"><b>☀️ Breakfast</b>Yogurt with fruit and cereal, or eggs and toast.</div>
+<div class="meal"><b>🥪 Lunch</b>Chicken or cheese wrap, fruit, and a side you enjoy.</div>
+<div class="meal"><b>🌙 Dinner</b>Rice or potatoes with chicken, beans, fish, or another favorite protein.</div>
+<div class="meal"><b>🍓 Snack</b>Apple and peanut butter, cheese and crackers, or a granola bar.</div>
+<p class="muted">No calorie counting or food guilt here. Your body needs regular fuel.</p></div>
+</section>
+<section id="habits" class="view">
+<div class="card"><h1>Your daily check-in</h1><p>Tap a box when you've done it. You can change these anytime.</p><div id="habitList">
+<div class="item"><input type="checkbox" id="h0"><label for="h0">💧 Had some water today</label></div>
+<div class="item"><input type="checkbox" id="h1"><label for="h1">🍽️ Ate regular meals and snacks</label></div>
+<div class="item"><input type="checkbox" id="h2"><label for="h2">🎶 Did movement I enjoyed, or chose rest</label></div>
+<div class="item"><input type="checkbox" id="h3"><label for="h3">🌙 Made time to relax and recharge</label></div>
+</div><div class="bar"><div id="progressBar"></div></div><div class="row"><span id="habitCount" class="muted">0 of 4 checked</span><button onclick="resetHabits()">Reset today</button></div></div>
+</section>
+<section id="progress" class="view">
+<div class="card"><h1>Your progress snapshot</h1><p>Progress can mean showing up, learning what works, or taking a needed break.</p><div class="row"><div class="stat"><strong id="progressNumber">0%</strong><small>today's check-in</small></div><div class="stat"><strong>🌱</strong><small>one step at a time</small></div></div><div class="bar"><div id="progressBar2"></div></div><p class="muted">Your check-ins stay in this browser on this device.</p></div>
+</section>
+<footer>better4me ✦ No pressure. Just progress.</footer>
+</div>
+<script>
+const tabs=[...document.querySelectorAll('[data-tab]')];
+function showTab(id){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id));tabs.forEach(b=>b.classList.toggle('active',b.dataset.tab===id));}
+tabs.forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
+const boxes=[0,1,2,3].map(i=>document.getElementById('h'+i));
+function update(){let n=boxes.filter(b=>b.checked).length,p=n/4*100;document.getElementById('habitCount').textContent=n+' of 4 checked';document.getElementById('todayDone').textContent=n+'/4';document.getElementById('progressNumber').textContent=Math.round(p)+'%';document.getElementById('progressBar').style.width=p+'%';document.getElementById('progressBar2').style.width=p+'%';try{localStorage.setItem('b4m-habits',JSON.stringify(boxes.map(b=>b.checked)))}catch(e){}}
+boxes.forEach(b=>b.addEventListener('change',update));
+try{const saved=JSON.parse(localStorage.getItem('b4m-habits')||'null');if(Array.isArray(saved))boxes.forEach((b,i)=>b.checked=!!saved[i])}catch(e){}
+function resetHabits(){boxes.forEach(b=>b.checked=false);update()}
+const tips={
+'Full-body gym basics':'Try a few comfortable movements with light resistance. Rest between sets and ask staff for help with equipment.',
+'Upper-body machines':'Choose a couple of machines and use a range of motion that feels comfortable. No need to rush.',
+'Lower-body basics':'Keep it controlled and comfortable. Stop if anything hurts.',
+'10-minute dance break':'Pick a favorite song and move in whatever way feels fun.',
+'Gentle stretch':'Move slowly and never force a stretch. Skip anything uncomfortable.',
+'Rest and recovery':'Take it easy. Relaxing, sleeping, and letting your body recover are part of taking care of yourself.'
+};
+document.getElementById('workout').addEventListener('change',e=>{let v=e.target.value;document.getElementById('workoutInfo').innerHTML='<b>'+v+'</b><span>'+tips[v]+'</span>';document.getElementById('moveDone').textContent='';});
+update();
+</script>
+</body>
+</html>
